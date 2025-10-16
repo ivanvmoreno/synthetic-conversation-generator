@@ -1,0 +1,121 @@
+- id: introduction
+  is_start: true
+  initiator: agent
+  actions:
+    - role: agent
+      action_type: template
+      description: Initiate the conversation by introducing yourself, the HR agent, and the open position.
+      example: |
+        Hello {candidate[first_name]}, I'm {agent[first_name]}, a recruiter from {agent[company_name]}. I'm reaching out to discuss the open position for a {job_opening[title]}. Would you be interested in learning more about the role?
+  next: interest_check
+
+- id: interest_check
+  initiator: candidate
+  actions:
+    - role: candidate
+      action_type: response
+      response_type: template
+      description: Confirm if they are interested in the open position.
+      examples:
+        "yes": Hello {agent[first_name]}, yes, I would like to learn more about the role.
+        "no": Hello {agent[first_name]}, thank you for reaching out, but I'm not interested in the position at this time.
+  is_branch: true
+  next:
+    "yes": job_experience_question
+    "no": goodbye
+
+- id: job_experience_question
+  initiator: agent
+  actions:
+    - role: agent
+      action_type: message
+      description: Ask the candidate about a past job experience relevant to the open position.
+      example: |
+        Sounds great! Can you tell me more about your experience working as a <job_title> at <company>? I see you have experience in <technologies>, which aligns well with the requirements for this role. Could you elaborate on your role and responsibilities?
+    - role: candidate
+      action_type: message
+      description: Provide details about their job experience.
+      example: |
+        I worked as a <job_title> at <company>, where I was responsible for <responsibilities>. I used <technologies> to develop <specific_projects>. My experience in <specific_skills> helped me achieve <specific_results>.
+  next: application_prompt
+
+- id: application_prompt
+  initiator: agent
+  actions:
+    - role: agent
+      action_type: template
+      description: Prompt the candidate to apply for the open position. Just a prompt, no additional questions.
+      example: |
+        Based on your experience, I believe you would be a good fit for the role. Would you like to apply for the position?
+    - role: candidate
+      action_type: response
+      response_type: template
+      description: Confirm whether or not they would like to apply for the open position.
+      examples:
+        "yes": Yes, I would like to apply for the position.
+        "no": I'm sorry, but I'm not interested in applying at this time.
+  is_branch: true
+  next:
+    "yes": additional_questions
+    "no": goodbye
+
+- id: additional_questions
+  initiator: agent
+  actions:
+    - role: agent
+      action_type: template
+      description: Invite the candidate to ask any questions they may have about the position or the company.
+      example: |
+        Before I guide you to the next steps, do you have any questions about the role or the company?
+    - role: candidate
+      action_type: response
+      description: Provide any questions that you as the candidate may have about the role or the company.
+      examples:
+        "yes": Yes, I have a few questions. Can you tell me more about <specific_topic>?
+        "no": No, I don't have any more questions at the moment.
+  is_branch: true
+  next:
+    "yes": additional_questions_followup
+    "no": application_portal
+
+- id: additional_questions_followup
+  initiator: agent
+  actions:
+    - role: agent
+      action_type: message
+      description: Respond to the candidate's questions. Don't ask any additional questions.
+      example: |
+        Thank you for your questions. I'm happy to provide more information about <specific_topic>.
+        <Provide additional information or guidance based on the candidate's questions.>
+        Shall we proceed with the application process?
+    - role: candidate
+      action_type: message
+      description: Confirm they are ready to proceed with the application process. Exclusively respond, no additional questions.
+      example: |
+        Thank you for the information. I'm ready to proceed with the application process.
+  next: application_portal
+
+- id: application_portal
+  initiator: agent
+  actions:
+    - role: agent
+      action_type: template
+      description: Guide the candidate to the application portal or provide instructions on how to apply.
+      example: |
+        Great! To proceed with your application, please visit our application portal at {agent[career_site_url]}. You can submit your application and any additional documents there. Let me know if you need any assistance during the process.
+    - role: candidate
+      action_type: message
+      description: Confirm that they will proceed with the application process.
+      example: |
+        Thank you for the information. I will visit the application portal and submit my application. If I have any questions, I'll reach out to you. Thank you for your time.
+  next: goodbye
+
+- id: goodbye
+  initiator: agent
+  actions:
+    - role: agent
+      action_type: message
+      description: End the conversation with a closing message.
+      example: |
+        Thank you for your time {candidate[first_name]}. If you have any more questions, feel free to reach out. Have a great day!
+  is_end: true

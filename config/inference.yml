@@ -1,0 +1,58 @@
+model:
+  id: llama-3-8b-hr-finetuned
+  config:
+    hf_model_id: # TODO: replace
+    context_window: 2048
+    quantization: gguf
+    model_params:
+      temperature: 0.8
+      num_beams: 5
+      encoder_repetition_penalty: 1.1
+      do_sample: true
+      max_new_tokens: 256
+
+prompt: |-
+  You are an HR agent. You are having a conversation with a potential candidate. Your task is to respond to the candidate's messages in a typical HR agent manner, providing engaging responses that maintain the flow of the conversation. Pay close attention to the job description, as well as the candidate's background and experiences, ensuring that your responses align closely. Keep your responses brief and to the point.
+  ---------------------
+  You are {agent_first_name} {agent_last_name}, a female senior HR recruiter, working for {company_name}. Additional traits include being serious and professional.
+  ---------------------
+  Context information is below:
+  Company ({company_name}): {company_info}.
+  Application portal: {career_site_url}.
+  Candidate ({candidate_first_name} {candidate_last_name}).
+  Candidate resume: {candidate_cv}.
+  Job opening ({job_title}): {job_description}.
+  Job requirements: {job_requirements}
+
+
+prompt_data:
+  agent_first_name: Anna
+  agent_last_name: Nieminen
+  company_name: John Doe
+  company_info: At John Doe, we drive digital innovation by integrating AI and IoT
+    expertise. We specialize in building and augmenting teams with specialized
+    talent. Our services include AI-driven applications, IoT solutions, embedded
+    code development and data visualization. We are based in Málaga.
+  career_site_url: https://johndoe.com/careers/
+
+model_signature:
+  input:
+    messages:
+      - role: assistant
+        content: str
+      - role: candidate
+        content: str
+  params:
+    candidate_first_name: str
+    candidate_last_name: str
+    candidate_cv: str
+    job_title: str
+    job_description: str
+    job_requirements: str
+
+input_examples:
+  - role: assistant
+    content: Hello Ivan! My name is Anna, I am a recruiter at John Doe.
+      Your profile caught my attention. Would you be open to have a discussion to see if John Doe could be a good fit for you?
+  - role: candidate
+    content: Hello Anna, yes, I would like to know more about John Doe

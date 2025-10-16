@@ -1,0 +1,13 @@
+transformers
+python-dotenv
+bitsandbytes
+accelerate
+hf_transfer
+torch
+unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
+xformers<0.0.27
+trl<0.9.0
+peft
+protobuf<=3.20.0
+triton
+sentencepiece

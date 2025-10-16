@@ -1,0 +1,86 @@
+agents:
+  - first_name: Anna
+    last_name: Nieminen
+    company_name: John Doe
+    company_info: |-
+      At John Doe, we drive digital innovation by integrating AI and IoT
+      expertise. We specialize in building and augmenting teams with specialized
+      talent. Our services include AI-driven applications, IoT solutions, embedded
+      code development and data visualization. We are based in Málaga.
+    career_site_url: https://johndoe.com/careers/
+candidates:
+  - first_name: Ivan
+    last_name: Moreno
+    experiences:
+      - company: John Doe
+        position: Senior Software Engineer
+        description: |-
+          Senior Software Engineer at John Doe, using following technologies and languages: Backend: Python, Node.js Frontend: React (Next.js) MLEng.: PyTorch (CUDA), numpy, OpenCV Data Science: Pandas, scikit-learn, Spark MLOps: Kubeflow, MLflow DBs: SQL, NoSQL, tabular, Key-Value Orchestration Platform: Kubernetes Public Cloud: AWS
+      - company: Atos
+        position: Research Engineer in AI
+        description: |-
+          Research and implementation of an internal MLOps platform Involved in several R&D projects (EU's Horizon 2020) in the AI domain
+      - company: The Cocktail
+        position: Data scientist
+        description: |-
+          Implementation of systems for lead scoring, efficiency analysis and forecasting for companies in the energy and insurance industry
+      - company: The Lego Group
+        position: Data Engineer
+        description: |-
+          Data Engineer Jul 2021 - Oct 2021 Working on LEGO.com's recommendation engines in the Data Science Products Engineering department
+job_openings:
+  - title: Senior Software Development Engineer
+    description: |-
+      We are seeking an innovative Senior Software Development Engineer with strong full-stack expertise to drive the development of new web-based applications and internal tools. The ideal candidate will lead the architectural direction of the team, incorporating advanced AI/ML capabilities while maintaining robust backend services. You will work extensively with TypeScript (React.js, Next.js) for frontend and middleware, and Java on the backend. This role also involves mentoring junior developers and collaborating across teams to ensure alignment on architectural decisions.
+    requirements:
+      - Proven experience as a mentor or tech lead
+      - Expertise in designing and architecting scalable and reliable systems
+      - Professional experience in software development (non-internship)
+      - Proficiency in programming languages like Java, C++, or C# with a strong grasp of object-oriented design
+      - Recent hands-on coding experience within the last 3 years
+  - title: Full Stack Developer
+    description: |-
+      We are looking for a skilled Full Stack Developer with a strong background in both frontend and backend development. You will be responsible for creating and maintaining web applications using React, Node.js, Python, and associated frameworks such as Flask, Express, and FastAPI. Experience with databases like PostgreSQL and MongoDB, along with CI/CD pipelines, is essential. The ideal candidate is comfortable in both agile and traditional settings and has hands-on experience working with APIs.
+    requirements:
+      - 3+ years of experience in full stack development
+      - Proficiency in React, Node.js, Python, and frameworks like Flask, Express
+      - Experience with databases such as PostgreSQL and MongoDB
+      - Familiarity with CI/CD tools like Jenkins, GitHub Actions, or GitLab CI/CD
+      - Comfortable in agile and traditional environments
+      - Experience with API integration, preferably Salesforce API
+  - title: Machine Learning Engineer
+    description: |-
+      Seeking a Machine Learning Engineer to develop, train, and deploy machine learning models into production. The role requires proficiency with TensorFlow, PyTorch, and Scikit-learn, along with experience in Python and SQL. The successful candidate will work on model optimization, data analysis, and visualization, using tools like Tableau or Power BI. Familiarity with APIs and a background in agile practices are advantageous.
+    requirements:
+      - 3+ years of experience in machine learning engineering
+      - Proficiency in frameworks such as TensorFlow, PyTorch, Scikit-learn
+      - Expertise in Python, SQL, and data visualization tools
+      - Comfortable in agile and traditional environments
+      - Experience with API integration, preferably Salesforce API
+  - title: Business Intelligence Analyst
+    description: |-
+      We are looking for a Business Intelligence Analyst to create and maintain data-driven reports and dashboards. The ideal candidate is proficient in tools like Tableau, Power BI, and Looker, with a solid understanding of SQL. You will collaborate with cross-functional teams to extract insights from data and communicate them effectively. Familiarity with APIs and experience working in both agile and traditional settings are required.
+    requirements:
+      - 3+ years of experience in business intelligence analysis
+      - Proficiency in BI tools such as Tableau, Power BI, Looker
+      - Strong SQL skills for data extraction and manipulation
+      - Comfortable in agile and traditional environments
+      - Experience with API integration, preferably Salesforce API
+  - title: Data Engineer
+    description: |-
+      We are seeking a Data Engineer to build and manage scalable data pipelines for real-time and batch processing. The role involves working with tools like Apache Airflow, Python, and SQL, alongside data visualization tools like Tableau or Power BI. You will optimize data flows, ensure data quality, and work closely with cross-functional teams to support data-driven decision-making.
+    requirements:
+      - 3+ years of experience in data engineering
+      - Proficiency in tools like Apache Airflow
+      - Strong skills in Python, SQL, and data visualization
+      - Comfortable in agile and traditional environments
+      - Experience with API integration, preferably Salesforce API
+  - title: Frontend Developer
+    description: |-
+      We are looking for a Frontend Developer with expertise in building dynamic and responsive web applications. The candidate should be proficient with frameworks like React, Angular, and Vue, and have strong skills in HTML, CSS, and JavaScript. You will work closely with UX designers to bring designs to life and collaborate with backend teams to integrate APIs.
+    requirements:
+      - 3+ years of experience in frontend development
+      - Proficiency in frameworks such as React, Angular, Vue
+      - Strong skills in HTML, CSS, and JavaScript
+      - Comfortable in agile and traditional environments
+      - Experience with API integration, preferably Salesforce API

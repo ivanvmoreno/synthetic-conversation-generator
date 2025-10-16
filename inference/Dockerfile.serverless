@@ -1,0 +1,45 @@
+FROM --platform=linux/amd64 nvidia/cuda:12.3.2-cudnn9-runtime-ubuntu22.04
+
+WORKDIR /
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV PYTHONUNBUFFERED 1 
+ENV PYTHON_VERSION 3.11
+# Hugging Face
+ENV HF_HOME "/runpod-volume/.cache/huggingface/"
+ENV HF_HUB_ENABLE_HF_TRANSFER "1"
+# pip
+ENV PIP_CACHE_DIR "/runpod-volume/.cache/pip"
+ENV PIP_PREFER_BINARY 1
+
+# Install curl and other dependencies
+RUN apt update && \
+    apt install -y --no-install-recommends make bash build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget ca-certificates curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev mecab-ipadic-utf8 git && \
+    apt autoremove -y && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV HOME /root
+ENV PYENV_ROOT $HOME/.pyenv
+ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
+
+# Install pyenv
+RUN curl https://pyenv.run | bash  && \
+    pyenv update  && \
+    pyenv install $PYTHON_VERSION  && \
+    pyenv global $PYTHON_VERSION  && \
+    pyenv rehash
+
+# Install model dependencies
+COPY requirements.txt /app/requirements.txt
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+# Set the entrypoint
+ENTRYPOINT ["/app/entrypoint.sh"]
+
+# Copy the application code
+COPY serverless.py /app/serverless.py
+
+# Run the main application script
+CMD [ "python", "-u", "/app/serverless.py" ]

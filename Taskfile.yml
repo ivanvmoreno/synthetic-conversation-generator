@@ -1,0 +1,18 @@
+version: '3'
+
+dotenv: ['.env', '{{.ROOT_DIR}}/.env.']
+
+vars:
+  PYTHON: 'python'
+
+tasks:
+  dep-lock:
+    desc: Update the project's lockfiles from the requirements-<env>.in files
+    cmds:
+      - 'pip-compile'
+      - 'pip-compile requirements-dev.in'
+  format:
+    desc: Format the code using black and isort
+    cmds:
+      - '{{.PYTHON}} -m black src'
+      - '{{.PYTHON}} -m isort src'
